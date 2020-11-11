@@ -1,33 +1,80 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  ImageSafeAreaView,
+  VirtualizedList,
+  SafeAreaView,
+  FlatList,
+  Image,
+} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-const allRecipes = {
-  items: [
-    { id: 1, recipeName: 'Cookies', duration: 30 },
-    { id: 2, recipeName: 'Pie and Mash', duration: 50 },
-    { id: 3, recipeName: 'Lobster', duration: 50 },
-  ],
-};
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen: List recipe items here.</Text>
+const allRecipes = [
+  { id: 1, recipeName: 'Cookies', duration: 30 },
+  { id: 2, recipeName: 'Pie and Mash', duration: 50 },
+  { id: 3, recipeName: 'Lobster', duration: 50 },
+  { id: 4, recipeName: 'Cookies', duration: 30 },
+  { id: 5, recipeName: 'Pie and Mash', duration: 50 },
+  { id: 6, recipeName: 'Lobster', duration: 50 },
+  { id: 7, recipeName: 'Cookies', duration: 30 },
+  { id: 8, recipeName: 'Pie and Mash', duration: 50 },
+  { id: 9, recipeName: 'Lobster', duration: 50 },
+];
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 50,
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 10,
+  },
+  logo: {
+    width: 150,
+    height: 158,
+  },
+});
 
-      {allRecipes.items.map((item) => (
-        <Button
-          title={item.recipeName}
-          onPress={() =>
-            navigation.navigate('Recipe', {
-              itemId: item,
-            })
-          }
-        />
-      ))}
-    </View>
+const Item = ({ recipe, navigation }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{recipe[0].recipeName}</Text>
+
+    <Button
+      title={'View Recipe'}
+      onPress={() =>
+        navigation.navigate('Recipe', {
+          itemId: recipe,
+        })
+      }
+    />
+  </View>
+);
+
+const renderItem = ({ item }) => <Item title={item.recipeName} />;
+
+function HomeScreen({ navigation }) {
+  const renderItem = ({ item }) => (
+    <Item recipe={[item]} navigation={navigation} />
+  );
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={allRecipes}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
+    </SafeAreaView>
   );
 }
 
@@ -52,10 +99,16 @@ function RecipeScreen({ route, navigation }) {
   const { itemId } = route.params;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Image
+        style={styles.logo}
+        source={{
+          uri:
+            'https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/3886/a4877f5e8352c499c437c3405e13cac1/3/3c645bb97a1a1d98023559f171bc3506/1165646.jpg',
+        }}
+      />
       <Text>Recipe Screen</Text>
-      <Text> {itemId.id}</Text>
-      <Text>{itemId.duration} mins</Text>
-      <Text>{itemId.recipeName} mins</Text>
+      <Text> {itemId[0].recipeName}</Text>
+      <Text>{itemId[0].duration} </Text>
     </View>
   );
 }
@@ -63,8 +116,16 @@ function RecipeScreen({ route, navigation }) {
 const HomeStack = () => {
   return (
     <HomeNav.Navigator>
-      <HomeNav.Screen name="Home" component={HomeScreen}  options={{ headerShown: false }}/>
-      <HomeNav.Screen name="Recipe" component={RecipeScreen} options={{ headerShown: true }} />
+      <HomeNav.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <HomeNav.Screen
+        name="Recipe"
+        component={RecipeScreen}
+        options={{ headerShown: true }}
+      />
     </HomeNav.Navigator>
   );
 };
@@ -83,12 +144,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
