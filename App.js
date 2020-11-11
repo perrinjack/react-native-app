@@ -19,20 +19,11 @@ const allRecipes = [
   { id: 1, recipeName: 'Cookies', duration: 30 },
   { id: 2, recipeName: 'Pie and Mash', duration: 50 },
   { id: 3, recipeName: 'Lobster', duration: 50 },
-  { id: 4, recipeName: 'Cookies', duration: 30 },
-  { id: 5, recipeName: 'Pie and Mash', duration: 50 },
-  { id: 6, recipeName: 'Lobster', duration: 50 },
-  { id: 7, recipeName: 'Cookies', duration: 30 },
-  { id: 8, recipeName: 'Pie and Mash', duration: 50 },
-  { id: 9, recipeName: 'Lobster', duration: 50 },
+  { id: 4, recipeName: 'Other', duration: 30 },
 ];
 const styles = StyleSheet.create({
   container: {
     paddingTop: 50,
-  },
-  tinyLogo: {
-    width: 50,
-    height: 50,
   },
   item: {
     backgroundColor: '#f9c2ff',
@@ -44,12 +35,15 @@ const styles = StyleSheet.create({
     width: 150,
     height: 158,
   },
+  title: {
+    fontSize: 32,
+  },
 });
 
 const Item = ({ recipe, navigation }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{recipe[0].recipeName}</Text>
-
+    <Text style={styles.title}>hello</Text>
     <Button
       title={'View Recipe'}
       onPress={() =>
@@ -72,7 +66,7 @@ function HomeScreen({ navigation }) {
       <FlatList
         data={allRecipes}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
       />
     </SafeAreaView>
   );
