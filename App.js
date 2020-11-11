@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   View,
@@ -10,8 +9,9 @@ import {
   SafeAreaView,
   FlatList,
   Image,
-  Card,
 } from 'react-native';
+
+import { Card, Icon, Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -42,40 +42,37 @@ const styles = StyleSheet.create({
 });
 
 const Item = ({ recipe, navigation }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{recipe[0].recipeName}</Text>
-    <Text style={styles.title}>hello</Text>
-    <Button
-      title={'View Recipe'}
-      onPress={() =>
-        navigation.navigate('Recipe', {
-          itemId: recipe,
-        })
-      }
-    />
+  <View>
+    <Card>
+      <Card.Title>{recipe[0].recipeName}</Card.Title>
+      <Card.Divider />
+      <Card.Image
+        source={{
+          uri:
+            'https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/3886/a4877f5e8352c499c437c3405e13cac1/3/3c645bb97a1a1d98023559f171bc3506/1165646.jpg',
+        }}
+      />
+      <Button
+        icon={<Icon name="code" color="#ffffff" />}
+        buttonStyle={{
+          borderRadius: 5,
+          marginLeft: 0,
+          marginRight: 0,
+          marginBottom: 0,
+          color: 'blue',
+        }}
+        title={'View Recipe'}
+        onPress={() =>
+          navigation.navigate('Recipe', {
+            itemId: recipe,
+          })
+        }
+      />
+    </Card>
   </View>
 );
 
-const renderItem = ({ item }) => (
-  <Card>
-    <Card.Title>HELLO WORLD</Card.Title>
-    <Card.Divider />
-    <Text style={{ marginBottom: 10 }}>
-      The idea with React Native Elements is more about component structure than
-      actual design.
-    </Text>
-    <Button
-      icon={<Icon name="code" color="#ffffff" />}
-      buttonStyle={{
-        borderRadius: 0,
-        marginLeft: 0,
-        marginRight: 0,
-        marginBottom: 0,
-      }}
-      title="VIEW NOW"
-    />
-  </Card>
-);
+const renderItem = ({ item }) => <Item title={item.recipeName} />;
 
 function HomeScreen({ navigation }) {
   const renderItem = ({ item }) => (
