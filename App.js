@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   FlatList,
   Image,
+  ScrollView,
 } from 'react-native';
 
 import {
@@ -19,17 +20,23 @@ import {
   Paragraph,
   Divider,
   Chip,
+  DefaultTheme,
+  Provider as PaperProvider,
+  DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
-
+import merge from 'deepmerge';
 import { Icon, CardItem } from 'react-native-elements';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DarkTheme as NavigationDarkTheme,
+} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const allRecipes = [
   {
     id: 1,
-    recipeName: 'Cookies',
+    recipeName: 'Chicken Teriyaki Chow Mein',
     duration: 30,
     image:
       'https://www.chasinglenscapes.com/wp-content/uploads/2020/06/food-photography-on-the-go-tips.jpg',
@@ -75,8 +82,22 @@ const styles = StyleSheet.create({
   },
 });
 
+const dataSource = [
+  'Volvo',
+  'Alpha Sports',
+  'Ford',
+  'Gräf & Stift',
+  'Aston Martin',
+  'BMW',
+  'Tarrant Automobile',
+  'Push',
+  'Österreichische Austro-Fiat',
+  'Mazda',
+  'Rosenbauer',
+];
+
 const Item = ({ recipe, navigation }) => (
-  <View>
+  <View style={{ flex: 1 }}>
     <Card
       onPress={() =>
         navigation.navigate('Recipe', {
@@ -90,18 +111,58 @@ const Item = ({ recipe, navigation }) => (
         }}
       />
       <Card.Content>
-        <Title>{recipe[0].recipeName}</Title>
-        <Paragraph>
-          Card content tectagdagcvdhzvcbhzx bhxz shbcbxz cb x
-          chabdhbchdabchbadhjbchjbdahbcdhc cdbchbdshcbdhsbchdsbhcbsdh
-        </Paragraph>
-        <Chip icon="information">Example Chip</Chip>
+        <Title
+          style={{
+            fontWeight: 'bold',
+            textAlign: 'left',
+            fontFamily: 'Helvetica-Bold',
+          }}
+        >
+          {recipe[0].recipeName}
+        </Title>
+        {/* <Paragraph style={{ fontWeight: 'light', textAlign: 'right' }}>
+          Featured in the Times
+        </Paragraph> */}
+        <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
+          <View style={styles1.row}>
+            <Chip style={styles1.chip}>
+              <Text style={styles1.chipText}>Vegan</Text>
+            </Chip>
+
+            <Chip style={styles1.chip}>
+              <Text style={styles1.chipText}>Gluten Free</Text>
+            </Chip>
+
+            <Chip style={styles1.chip}>
+              <Text style={styles1.chipText}>Under £5</Text>
+            </Chip>
+          </View>
+        </ScrollView>
       </Card.Content>
     </Card>
   </View>
 );
 
-const renderItem = ({ item }) => <Item title={item.recipeName} />;
+const styles1 = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 100,
+    alignItems: 'center',
+  },
+  row: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: 12,
+    justifyContent: 'space-evenly',
+  },
+  chip: {
+    backgroundColor: 'pink',
+    margin: 4,
+  },
+  chipText: {
+    color: 'black',
+  },
+});
 
 function HomeScreen({ navigation }) {
   const renderItem = ({ item }) => (
@@ -170,17 +231,30 @@ const HomeStack = () => {
   );
 };
 
+// const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
+const CombinedDarkTheme = {
+  ...PaperDarkTheme,
+  ...NavigationDarkTheme,
+  colors: {
+    ...PaperDarkTheme.colors,
+    ...NavigationDarkTheme.colors,
+    text: 'pink',
+  },
+};
+
 const Tab = createBottomTabNavigator();
 const HomeNav = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeStack} />
-        <Tab.Screen name="My Favs" component={OrdersScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <PaperProvider theme={CombinedDarkTheme}>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={HomeStack} />
+          <Tab.Screen name="My Favs" component={OrdersScreen} />
+          <Tab.Screen name="Settings" component={SettingsScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
