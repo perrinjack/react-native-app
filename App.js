@@ -11,7 +11,15 @@ import {
   Image,
 } from 'react-native';
 
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import {
+  Avatar,
+  Button,
+  Card,
+  Title,
+  Paragraph,
+  Divider,
+  Chip,
+} from 'react-native-paper';
 
 import { Icon, CardItem } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
@@ -87,8 +95,8 @@ const Item = ({ recipe, navigation }) => (
           Card content tectagdagcvdhzvcbhzx bhxz shbcbxz cb x
           chabdhbchdabchbadhjbchjbdahbcdhc cdbchbdshcbdhsbchdsbhcbsdh
         </Paragraph>
+        <Chip icon="information">Example Chip</Chip>
       </Card.Content>
-      <Card.Actions></Card.Actions>
     </Card>
   </View>
 );
