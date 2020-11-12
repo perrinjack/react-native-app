@@ -12,6 +12,8 @@ import {
   ScrollView,
 } from 'react-native';
 
+import { Icon } from 'react-native-elements';
+
 import {
   Avatar,
   Button,
@@ -26,7 +28,7 @@ import {
   IconButton,
 } from 'react-native-paper';
 import merge from 'deepmerge';
-import { Icon, CardItem } from 'react-native-elements';
+import { CardItem } from 'react-native-elements';
 import {
   NavigationContainer,
   DarkTheme as NavigationDarkTheme,
@@ -98,7 +100,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     textAlign: 'left',
-    fontFamily: 'Roboto',
     marginVertical: 8,
   },
 });
@@ -134,7 +135,12 @@ const Item = ({ recipe, navigation }) => (
             </Paragraph>
           </View>
           <View style={styles.row}>
-            <Avatar.Icon style={styles.av} color = "pink" size={26} icon="clock" />
+            <Avatar.Icon
+              style={styles.av}
+              color="pink"
+              size={26}
+              icon="clock"
+            />
             <Paragraph style={{ fontWeight: 'bold' }}>
               {recipe[0].duration} mins
             </Paragraph>
@@ -299,7 +305,21 @@ export default function App() {
   return (
     <PaperProvider theme={CombinedDarkTheme}>
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator
+          initialRouteName="Home"
+          activeColor="#f0edf6"
+          inactiveColor="#3e2465"
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              // You can return any component that you like here!
+              return <Icon name="md-home" type="ionicon" color = 'pink'/>;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: 'tomato',
+            inactiveTintColor: 'gray',
+          }}
+        >
           <Tab.Screen name="Home" component={HomeStack} />
           <Tab.Screen name="My Favs" component={OrdersScreen} />
           <Tab.Screen name="Settings" component={SettingsScreen} />
