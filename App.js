@@ -11,6 +11,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 import { Icon } from 'react-native-elements';
 
@@ -75,7 +76,6 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
   item: {
-    backgroundColor: '#f9c2ff',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 10,
@@ -298,7 +298,7 @@ const CombinedDarkTheme = {
   },
 };
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 const HomeNav = createStackNavigator();
 
 export default function App() {
@@ -307,18 +307,22 @@ export default function App() {
       <NavigationContainer>
         <Tab.Navigator
           initialRouteName="Home"
-          activeColor="#f0edf6"
-          inactiveColor="#3e2465"
+          activeColor="pink"
+          inactiveColor="black"
           screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              // You can return any component that you like here!
-              return <Icon name="md-home" type="ionicon" color = 'pink'/>;
+            tabBarIcon: ({ focused, size }) => {
+              let iconName;
+              let color = 'pink';
+              if (route.name === 'Home') {
+                iconName = focused ? 'ios-home' : 'ios-add';
+              } else if (route.name === 'Settings') {
+                iconName = focused ? 'ios-list-box' : 'ios-list';
+              } else if (route.name === 'My Favs') {
+                iconName = focused ? 'ios-list-box' : 'ios-list';
+              }
+              return <Icon name={iconName} type="ionicon" color={color} />;
             },
           })}
-          tabBarOptions={{
-            activeTintColor: 'tomato',
-            inactiveTintColor: 'gray',
-          }}
         >
           <Tab.Screen name="Home" component={HomeStack} />
           <Tab.Screen name="My Favs" component={OrdersScreen} />
