@@ -11,7 +11,9 @@ import {
   Image,
 } from 'react-native';
 
-import { Card, Icon, Button } from 'react-native-elements';
+import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+
+import { Icon, CardItem } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -44,30 +46,27 @@ const styles = StyleSheet.create({
 const Item = ({ recipe, navigation }) => (
   <View>
     <Card>
-      <Card.Title>{recipe[0].recipeName}</Card.Title>
-      <Card.Divider />
-      <Card.Image
+      <Card.Cover
         source={{
           uri:
             'https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/3886/a4877f5e8352c499c437c3405e13cac1/3/3c645bb97a1a1d98023559f171bc3506/1165646.jpg',
         }}
       />
-      <Button
-        icon={<Icon name="code" color="#ffffff" />}
-        buttonStyle={{
-          borderRadius: 5,
-          marginLeft: 0,
-          marginRight: 0,
-          marginBottom: 0,
-          color: 'blue',
-        }}
-        title={'View Recipe'}
-        onPress={() =>
-          navigation.navigate('Recipe', {
-            itemId: recipe,
-          })
-        }
-      />
+      <Card.Content>
+        <Title>{recipe[0].recipeName}</Title>
+        <Paragraph>Card content</Paragraph>
+      </Card.Content>
+      <Card.Actions>
+        <Button
+          onPress={() =>
+            navigation.navigate('Recipe', {
+              itemId: recipe,
+            })
+          }
+        >
+          Ok
+        </Button>
+      </Card.Actions>
     </Card>
   </View>
 );
