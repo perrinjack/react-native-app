@@ -19,10 +19,34 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const allRecipes = [
-  { id: 1, recipeName: 'Cookies', duration: 30 },
-  { id: 2, recipeName: 'Pie and Mash', duration: 50 },
-  { id: 3, recipeName: 'Lobster', duration: 50 },
-  { id: 4, recipeName: 'Other', duration: 30 },
+  {
+    id: 1,
+    recipeName: 'Cookies',
+    duration: 30,
+    image:
+      'https://www.chasinglenscapes.com/wp-content/uploads/2020/06/food-photography-on-the-go-tips.jpg',
+  },
+  {
+    id: 2,
+    recipeName: 'Pie and Mash',
+    duration: 50,
+    image:
+      'https://hips.hearstapps.com/ghk.h-cdn.co/assets/16/38/1474395998-ghk-0216-comfortfoodcover-meatballs.jpg?crop=0.856xw:0.571xh;0.0224xw,0.296xh&resize=640:*',
+  },
+  {
+    id: 3,
+    recipeName: 'Lobster',
+    duration: 50,
+    image:
+      'https://c.ndtvimg.com/2020-01/dd46j918_chilli-chicken_625x300_21_January_20.jpg',
+  },
+  {
+    id: 4,
+    recipeName: 'Other',
+    duration: 30,
+    image:
+      'https://asset1.cxnmarksandspencer.com/is/image/mands/0533_20201001_FTO_1200X1200?wid=900&qlt=70&fmt=pjpeg',
+  },
 ];
 const styles = StyleSheet.create({
   container: {
@@ -45,28 +69,26 @@ const styles = StyleSheet.create({
 
 const Item = ({ recipe, navigation }) => (
   <View>
-    <Card>
+    <Card
+      onPress={() =>
+        navigation.navigate('Recipe', {
+          itemId: recipe,
+        })
+      }
+    >
       <Card.Cover
         source={{
-          uri:
-            'https://d3vn5rg72hh8yg.cloudfront.net/cdn/imagesource/previews/3886/a4877f5e8352c499c437c3405e13cac1/3/3c645bb97a1a1d98023559f171bc3506/1165646.jpg',
+          uri: recipe[0].image,
         }}
       />
       <Card.Content>
         <Title>{recipe[0].recipeName}</Title>
-        <Paragraph>Card content</Paragraph>
+        <Paragraph>
+          Card content tectagdagcvdhzvcbhzx bhxz shbcbxz cb x
+          chabdhbchdabchbadhjbchjbdahbcdhc cdbchbdshcbdhsbchdsbhcbsdh
+        </Paragraph>
       </Card.Content>
-      <Card.Actions>
-        <Button
-          onPress={() =>
-            navigation.navigate('Recipe', {
-              itemId: recipe,
-            })
-          }
-        >
-          Ok
-        </Button>
-      </Card.Actions>
+      <Card.Actions></Card.Actions>
     </Card>
   </View>
 );
