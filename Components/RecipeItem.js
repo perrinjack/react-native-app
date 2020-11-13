@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const Item = ({ recipe, navigation }) => (
+export const RecipeItem = ({ recipe, navigation }) => (
   <View>
     <Card
       onPress={() =>
@@ -93,7 +93,7 @@ const RecipeChip = ({ icon, text, navigation, recipe }) => (
     icon={icon}
     style={styles.chip}
     onPress={() =>
-      navigation.navigate('Orders', {
+      navigation.navigate('Settings', {
         itemId: recipe,
       })
     }
