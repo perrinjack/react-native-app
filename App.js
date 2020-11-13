@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  FlatList,
-  Image,
-} from 'react-native';
 
-import { Avatar, Card, Title, Paragraph, Chip } from 'react-native-paper';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 import { Icon } from 'react-native-elements';
@@ -18,9 +9,6 @@ import {
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
 
-import { RecipeItem } from './Components/RecipeItem';
-import { RecipeSingularItem } from './Components/SingleRecipe';
-
 import {
   NavigationContainer,
   DarkTheme as NavigationDarkTheme,
@@ -28,60 +16,21 @@ import {
 
 import { RecipeScreen } from './Screens/RecipeScreen';
 
+import { SettingsScreen } from './Screens/SettingsScreen';
+
+import { HomeScreen } from './Screens/HomeScreen';
+
 import { createStackNavigator } from '@react-navigation/stack';
 
-const styles1 = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 100,
-    alignItems: 'center',
+const CombinedDarkTheme = {
+  ...PaperDarkTheme,
+  ...NavigationDarkTheme,
+  colors: {
+    ...PaperDarkTheme.colors,
+    ...NavigationDarkTheme.colors,
+    text: 'pink',
   },
-  row: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    paddingHorizontal: 12,
-    justifyContent: 'space-evenly',
-    borderBottomColor: 'pink',
-    borderBottomWidth: 1,
-    paddingBottom: 20,
-  },
-  chip: {
-    backgroundColor: 'pink',
-    margin: 4,
-  },
-  chipText: {
-    color: 'black',
-  },
-});
-
-function HomeScreen({ navigation }) {
-  const renderItem = ({ item }) => (
-    <RecipeItem recipe={[item]} navigation={navigation} />
-  );
-  return (
-    <View
-      style={{
-        backgroundColor: '#30475e',
-      }}
-    >
-      <SafeAreaView>
-        <FlatList
-          data={allRecipes}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}
-        />
-      </SafeAreaView>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings in dev!</Text>
-    </View>
-  );
-}
+};
 
 const HomeStack = () => {
   return (
@@ -127,21 +76,9 @@ export default function App() {
           })}
         >
           <Tab.Screen name="Home" component={HomeStack} />
-
           <Tab.Screen name="Settings" component={SettingsScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </PaperProvider>
   );
 }
-
-// const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
-const CombinedDarkTheme = {
-  ...PaperDarkTheme,
-  ...NavigationDarkTheme,
-  colors: {
-    ...PaperDarkTheme.colors,
-    ...NavigationDarkTheme.colors,
-    text: 'pink',
-  },
-};
