@@ -26,6 +26,8 @@ import {
   DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
 
+import { RecipeScreen } from './Screens/RecipeScreen';
+
 import { createStackNavigator } from '@react-navigation/stack';
 
 const styles1 = StyleSheet.create({
@@ -77,22 +79,6 @@ function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Settings in dev!</Text>
-    </View>
-  );
-}
-
-function RecipeScreen({ route, navigation }) {
-  /* 2. Get the param */
-  const { itemId } = route.params;
-  return (
-    <View
-      style={{
-        backgroundColor: '#30475e',
-      }}
-    >
-      <SafeAreaView>
-        <RecipeSingularItem recipe={itemId} />
-      </SafeAreaView>
     </View>
   );
 }
