@@ -63,9 +63,24 @@ export const Item = ({ recipe, navigation }) => (
         </View>
         <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
           <View style={styles.chiprow}>
-            <RecipeChip icon="camera" text="fiver" />
-            <RecipeChip icon="camera" text="fiver" />
-            <RecipeChip icon="camera" text="fiver" />
+            <RecipeChip
+              icon="camera"
+              text="fiver"
+              navigation={navigation}
+              recipe={recipe}
+            />
+            <RecipeChip
+              icon="camera"
+              text="fiver"
+              navigation={navigation}
+              recipe={recipe}
+            />
+            <RecipeChip
+              icon="camera"
+              text="fiver"
+              navigation={navigation}
+              recipe={recipe}
+            />
           </View>
         </ScrollView>
       </Card.Content>
@@ -73,7 +88,7 @@ export const Item = ({ recipe, navigation }) => (
   </View>
 );
 
-const RecipeChip = ({ icon, text, navigation }) => (
+const RecipeChip = ({ icon, text, navigation, recipe }) => (
   <Chip
     icon={icon}
     style={styles.chip}
