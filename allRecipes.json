@@ -1,7 +1,10 @@
 [
   {
     "id": 1,
-    "user": "John Watkins",
+    "user": {
+      "name": "John Watkins",
+      "image": "https://kottke.org/plus/misc/images/ai-faces-01.jpg"
+    },
     "recipeName": "Chicken Teriyaki Chow Mein",
     "duration": 30,
     "image": "https://www.chasinglenscapes.com/wp-content/uploads/2020/06/food-photography-on-the-go-tips.jpg",
@@ -10,7 +13,10 @@
   },
   {
     "id": 2,
-    "user": "John Watkins",
+    "user": {
+      "name": "John Watkins",
+      "image": "https://kottke.org/plus/misc/images/ai-faces-01.jpg"
+    },
     "recipeName": "Chicken Teriyaki Chow Mein",
     "duration": 30,
     "image": "https://hips.hearstapps.com/ghk.h-cdn.co/assets/16/38/1474395998-ghk-0216-comfortfoodcover-meatballs.jpg?crop=0.856xw:0.571xh;0.0224xw,0.296xh&resize=640:*",
@@ -19,7 +25,10 @@
   },
   {
     "id": 3,
-    "user": "John Watkins",
+    "user": {
+      "name": "John Watkins",
+      "image": "https://kottke.org/plus/misc/images/ai-faces-01.jpg"
+    },
     "recipeName": "Chicken Teriyaki Chow Mein",
     "duration": 30,
     "image": "https://c.ndtvimg.com/2020-01/dd46j918_chilli-chicken_625x300_21_January_20.jpg",
@@ -28,7 +37,10 @@
   },
   {
     "id": 4,
-    "user": "John Watkins",
+    "user": {
+      "name": "John Watkins",
+      "image": "https://kottke.org/plus/misc/images/ai-faces-01.jpg"
+    },
     "recipeName": "Chicken Teriyaki Chow Mein",
     "duration": 30,
     "image": "https://asset1.cxnmarksandspencer.com/is/image/mands/0533_20201001_FTO_1200X1200?wid=900&qlt=70&fmt=pjpeg",
