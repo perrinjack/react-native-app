@@ -66,9 +66,9 @@ export const RecipeSingularItem = ({ recipe }) => (
         </Paragraph>
         <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
           <View style={styles.chiprow}>
-            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
-            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
-            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
+            {recipe[0].tags.map((x) => (
+              <RecipeChip icon="camera" text={x} />
+            ))}
           </View>
         </ScrollView>
       </Card.Content>

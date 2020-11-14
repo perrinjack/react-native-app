@@ -25,11 +25,10 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   chip: {
-    backgroundColor: 'pink',
     margin: 4,
   },
   chipText: {
-    color: 'black',
+    color: 'pink',
   },
   chiprow: {
     flexDirection: 'row',
@@ -64,9 +63,9 @@ export const RecipeItem = ({ recipe, navigation }) => (
         </View>
         <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
           <View style={styles.chiprow}>
-            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
-            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
-            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
+            {recipe[0].tags.map((x) => (
+              <RecipeChip icon="camera" text={x} />
+            ))}
           </View>
         </ScrollView>
       </Card.Content>
@@ -74,7 +73,7 @@ export const RecipeItem = ({ recipe, navigation }) => (
   </View>
 );
 
-export const RecipeChip = ({ icon, text, recipe }) => (
+export const RecipeChip = ({ icon, text }) => (
   <Chip icon={icon} style={styles.chip} textStyle={styles.chipText}>
     <Text>{text}</Text>
   </Chip>
