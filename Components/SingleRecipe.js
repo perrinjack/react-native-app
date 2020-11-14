@@ -1,7 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { DataTable } from 'react-native-paper';
-import { Avatar, Card, Title, Paragraph, Chip } from 'react-native-paper';
+import {
+  Avatar,
+  Card,
+  Title,
+  Paragraph,
+  Chip,
+  Button,
+} from 'react-native-paper';
 import { RecipeChip } from './RecipeItem';
 const styles = StyleSheet.create({
   av: {
@@ -93,39 +100,43 @@ export const RecipeSingularItem = ({ recipe }) => (
           <Title style={styles.subtitle}>Ingredients</Title>
           <Title style={styles.servings}>4 Servings</Title>
         </View>
+
         <DataTable>
           <DataTable.Header>
             <DataTable.Title>Item</DataTable.Title>
             <DataTable.Title numeric>Amount</DataTable.Title>
           </DataTable.Header>
 
-          <DataTable.Row>
+          <DataTable.Row key={1}>
             <DataTable.Cell>Frozen yogurt</DataTable.Cell>
 
             <DataTable.Cell numeric>6 cups</DataTable.Cell>
           </DataTable.Row>
 
-          <DataTable.Row>
+          <DataTable.Row key={2}>
             <DataTable.Cell>Eggs </DataTable.Cell>
 
             <DataTable.Cell numeric>80g</DataTable.Cell>
           </DataTable.Row>
-          <DataTable.Row>
+          <DataTable.Row key={3}>
             <DataTable.Cell>Beers</DataTable.Cell>
 
             <DataTable.Cell numeric>80g</DataTable.Cell>
           </DataTable.Row>
-          <DataTable.Row>
+          <DataTable.Row key={4}>
             <DataTable.Cell>Fosters</DataTable.Cell>
 
             <DataTable.Cell numeric>80g</DataTable.Cell>
           </DataTable.Row>
-          <DataTable.Row>
+          <DataTable.Row key={5}>
             <DataTable.Cell>Ice cream </DataTable.Cell>
 
             <DataTable.Cell numeric>80g</DataTable.Cell>
           </DataTable.Row>
         </DataTable>
+        <Button mode="outlined" l abelStyle={{ color: 'pink' }}>
+          Purchase Items
+        </Button>
       </Card.Content>
     </Card>
 
