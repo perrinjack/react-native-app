@@ -2,10 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 import { Avatar, Card, Title, Paragraph, Chip } from 'react-native-paper';
-
+import { RecipeChip } from './RecipeItem';
 const styles = StyleSheet.create({
   av: {
-    marginHorizontal: 10,
+    marginHorizontal: 7,
+    backgroundColor: 'black',
+  },
+  paragraph: {
+    marginTop: 10,
   },
   row: {
     flexDirection: 'row',
@@ -55,13 +59,18 @@ export const RecipeSingularItem = ({ recipe }) => (
           <RecipeOwner recipe={recipe} />
           <RecipeDuration recipe={recipe} />
         </View>
-        <Paragraph>
+        <Paragraph style={styles.paragraph}>
           Specifically, the contents of a paragraph are as follows: The Topic
           Sentence serves two functions: first, it functions as the thesis of
-          your paragraph; second, it pushes the thesis of your essay forward and
-          presents an arguable point. The topic sentence is usually the first or
-          second sentence of a paragraph.
+          your paragraph; second, Specifically,
         </Paragraph>
+        <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
+          <View style={styles.chiprow}>
+            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
+            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
+            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
+          </View>
+        </ScrollView>
       </Card.Content>
     </Card>
   </View>

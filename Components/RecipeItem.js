@@ -5,7 +5,8 @@ import { Avatar, Card, Title, Paragraph, Chip } from 'react-native-paper';
 
 const styles = StyleSheet.create({
   av: {
-    marginHorizontal: 10,
+    marginHorizontal: 7,
+    backgroundColor: 'black',
   },
   row: {
     flexDirection: 'row',
@@ -63,24 +64,9 @@ export const RecipeItem = ({ recipe, navigation }) => (
         </View>
         <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
           <View style={styles.chiprow}>
-            <RecipeChip
-              icon="camera"
-              text="fiver"
-              navigation={navigation}
-              recipe={recipe}
-            />
-            <RecipeChip
-              icon="camera"
-              text="fiver"
-              navigation={navigation}
-              recipe={recipe}
-            />
-            <RecipeChip
-              icon="camera"
-              text="fiver"
-              navigation={navigation}
-              recipe={recipe}
-            />
+            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
+            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
+            <RecipeChip icon="camera" text="fiver" recipe={recipe} />
           </View>
         </ScrollView>
       </Card.Content>
@@ -88,17 +74,9 @@ export const RecipeItem = ({ recipe, navigation }) => (
   </View>
 );
 
-const RecipeChip = ({ icon, text, navigation, recipe }) => (
-  <Chip
-    icon={icon}
-    style={styles.chip}
-    onPress={() =>
-      navigation.navigate('Settings', {
-        itemId: recipe,
-      })
-    }
-  >
-    <Text style={styles.chipText}>{text}</Text>
+export const RecipeChip = ({ icon, text, recipe }) => (
+  <Chip icon={icon} style={styles.chip} textStyle={styles.chipText}>
+    <Text>{text}</Text>
   </Chip>
 );
 
