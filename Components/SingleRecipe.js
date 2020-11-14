@@ -60,9 +60,7 @@ export const RecipeSingularItem = ({ recipe }) => (
           <RecipeDuration recipe={recipe} />
         </View>
         <Paragraph style={styles.paragraph}>
-          Specifically, the contents of a paragraph are as follows: The Topic
-          Sentence serves two functions: first, it functions as the thesis of
-          your paragraph; second, Specifically,
+         {recipe[0].content}
         </Paragraph>
         <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
           <View style={styles.chiprow}>
