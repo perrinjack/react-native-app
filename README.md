@@ -1,14 +1,13 @@
-   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen: List recipe items here.</Text>
+ # Recipe App 
 
-      {allRecipes.items.map((item) => (
-        <Button
-          title={item.recipeName}
-          onPress={() =>
-            navigation.navigate('Recipe', {
-              itemId: item,
-            })
-          }
-        />
-      ))}
-    </View>
+A simple recipes app built for food lovers! Users can view the latest recipes and there instructions.
+
+## Goals
+
+Learn to use React-Natives Framework - this was the first time I had used it.
+
+Build the app with a key focus on UX and front end design. 
+
+
+
+

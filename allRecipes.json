@@ -14,19 +14,19 @@
   {
     "id": 2,
     "user": {
-      "name": "John Watkins",
+      "name": "Steven Perrin",
       "image": "https://kottke.org/plus/misc/images/ai-faces-01.jpg"
     },
-    "recipeName": "Chicken Teriyaki Chow Mein",
+    "recipeName": "Simple Meatballs",
     "duration": 30,
     "image": "https://hips.hearstapps.com/ghk.h-cdn.co/assets/16/38/1474395998-ghk-0216-comfortfoodcover-meatballs.jpg?crop=0.856xw:0.571xh;0.0224xw,0.296xh&resize=640:*",
-    "tags": ["Vegan", "Plant Based", "Gluten", "Spicy", "Simple"],
+    "tags": ["Gluten", "Spicy", "Under £5"],
     "content": "Specifically, the contents of a paragraph are as follows: The Topic Sentence serves two functions: first, it functions as the thesis of your paragraph; second, it pushes the thesis of your essay forward and presents an arguable point. The topic sentence is usually the first or second sentence of a paragraph."
   },
   {
     "id": 3,
     "user": {
-      "name": "John Watkins",
+      "name": "Lee Dixon",
       "image": "https://kottke.org/plus/misc/images/ai-faces-01.jpg"
     },
     "recipeName": "Chicken Teriyaki Chow Mein",
