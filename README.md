@@ -8,6 +8,6 @@ Learn to use React-Natives Framework - this was the first time I had used it.
 
 Build the app with a key focus on UX and front end design. 
 
+## Demo
 
-
-
+![Demo](./recipe_app.gif)
